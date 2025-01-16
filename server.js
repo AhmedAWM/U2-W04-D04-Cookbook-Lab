@@ -17,10 +17,12 @@ const User = require("./models/user");
 app.use(express.static("public")); // Load images and static files in pages with "public" directory
 app.use(express.urlencoded({ extended: false })); // Allow to transfer the objects to another route through request.body
 app.use(methodOverride("_method")); // Allow PUT/DELETE in forms
-app.use(session({ // SESSION_SECRET from .env
+app.use(
+  session({
+    // SESSION_SECRET from .env
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
   })
 );
 
@@ -39,11 +41,11 @@ app.use("/auth", authController);
 
 // Homepage
 app.get("/", (request, response) => {
-    if(request.session.user) {
-        response.render("home.ejs", request.session.user);
-    } else {
-        response.redirect("auth/signin");
-    }
+  if (request.session.user) {
+    response.render("home.ejs", { user: request.session.user });
+  } else {
+    response.render("../auth/signin.ejs", { user: null });
+  }
 });
 
 // If wrong path, redirect to error 404 page
@@ -53,5 +55,5 @@ app.get("/", (request, response) => {
 
 // Start the server on port 3000
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+  console.log(`Server is running on port ${process.env.PORT}`);
 });

@@ -1,12 +1,14 @@
 <header class="header">
-    <a href="/">
-        <img src="/img/logo.svg" class="logo" />
-      </a>
-    <nav>
-        <ul class="main-nav">
-            <li><a href="/" class="main-nav-link">Menu 1</a></li>
-            <li><a href="/" class="main-nav-link">Menu 2</a></li>
-            <li><a href="/" class="main-nav-link">Menu 3</a></li>
-        </ul>
-    </nav>
+  <a href="/">
+    <img src="/img/logo.svg" class="logo" />
+  </a>
+  <% if(user) { %>
+  <nav>
+    <ul class="main-nav">
+      <li><a href="/" class="main-nav-link">Menu 1</a></li>
+      <li><a href="/" class="main-nav-link">Menu 2</a></li>
+      <li><a href="/auth/signout" class="main-nav-link">Signout</a></li>
+    </ul>
+  </nav>
+  <% } %>
 </header>
