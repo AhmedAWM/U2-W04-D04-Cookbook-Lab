@@ -42,7 +42,7 @@ app.get("/", (request, response) => {
     if(request.session.user) {
         response.render("home.ejs", request.session.user);
     } else {
-        response.redirect("auth");
+        response.redirect("auth/signin");
     }
 });
 
