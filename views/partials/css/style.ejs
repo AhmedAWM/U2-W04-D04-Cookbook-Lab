@@ -1,5 +1,5 @@
 <style>
-    /*
+  /*
     Colors:
     Main: #5d2814
     Main light: #84412c
@@ -7,166 +7,191 @@
 
     */
 
+  /* HTML Elements */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
 
-    /* HTML Elements */
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-    }
+  html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
 
-    html {
-        font-size: 62.5%;
-        overflow-x: hidden;
-    }
+  body {
+    font-family: "Rubik", serif, system-ui;
+  }
 
-    body {
-        font-family: "Rubik", serif, system-ui;
-    }
+  button {
+    cursor: pointer;
+  }
 
-    button {
-        cursor: pointer;
-    }
+  /* Classes */
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8.4rem;
+    padding: 0 4.8rem;
+    position: relative;
+    background-color: #dfd7d4;
+  }
 
-    /* Classes */
-    /* Header */
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 8.4rem;
-        padding: 0 4.8rem;
-        position: relative;
-        background-color: #dfd7d4;
-    }
+  .main-nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4.8rem;
+  }
 
-    .logo {
-        height: 5.2rem;
-    }
+  .main-nav-link {
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+    padding: 1rem 3.2rem;
+    border: transparent 0.2rem solid;
+    font-family: "Rubik", serif, system-ui;
+  }
 
-    .main-nav {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 4.8rem;
-    }
+  .main-nav-link:hover {
+    color: #5d2814;
+    border: #5d2814 0.2rem solid;
+  }
 
-    .main-nav-link {
-        font-size: 1.8rem;
-        text-decoration: none;
-        font-weight: 500;
-        color: #000;
-        padding: 1rem 3.2rem;
-        border: transparent 0.2rem solid;
-        font-family: "Rubik", serif, system-ui;
-    }
+  /* Hero */
+  .section-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75%;
+    margin: 0 auto;
+  }
 
-    .main-nav-link:hover {
-        color: #5d2814;
-        border: #5d2814 0.2rem solid;
-    }
+  .hero {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+    gap: 9.6rem;
+    align-items: center;
+  }
 
-    /* Hero */
-    .section-hero {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        width: 75%;
-        margin: 0 auto;
-    }
-  
-    .hero {
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 3.2rem;
-        gap: 9.6rem;
-        align-items: center;
-    }
+  .hero-image {
+    width: 75%;
+    margin: 0 auto;
+  }
 
-    .hero-image {
-        width: 75%;
-        margin: 0 auto;
-    }
+  .error-404-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    width: 40%;
+    margin: 12.8rem auto;
+    font-size: 1.4rem;
+  }
 
-    /* Signin page */
-    .signin-container {
-        width: 75%;
-        margin: 0 auto;
-    }
+  .error-404-message {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .signin-form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin: 3.2rem;
-        padding: 2.4rem;
-        border: 0.1rem #dfd7d4 solid;
-        font-size: 1.2rem;
-    }
+  .sad-mango-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
-    .signin-form div {
-        align-self: center;
-    }
+  /* Signin page */
+  .signin-container {
+    width: 75%;
+    margin: 0 auto;
+  }
 
-    /* Signup page */
-    .signup-container {
-        width: 50%;
-        margin: 0 auto;
-    }
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 3.2rem;
+    padding: 2.4rem;
+    border: 0.1rem #dfd7d4 solid;
+    font-size: 1.2rem;
+  }
 
-    .signup-form {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin: 3.2rem;
-        padding: 2.4rem;
-        border: 0.1rem #dfd7d4 solid;
-        font-size: 1.2rem;
-    }
+  .signin-form div {
+    align-self: center;
+  }
 
-    .signup-form div {
-        align-self: center;
-    }
+  /* Signup page */
+  .signup-container {
+    width: 50%;
+    margin: 0 auto;
+  }
 
-    /* Reusables */
-    .input-field {
-        padding: 0.6rem;
-        margin-bottom: 2.4rem;
-        outline: none;
-        border: 1px solid #dfd7d4;
-    }
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 3.2rem;
+    padding: 2.4rem;
+    border: 0.1rem #dfd7d4 solid;
+    font-size: 1.2rem;
+  }
 
-    .title {
-        font-size: 2.4rem;
-    }
+  .signup-form div {
+    align-self: center;
+  }
 
-    .subtitle {
-        margin: 1.4rem 0 1rem 0;
-        color: #828282;
-        font-size: 1.2rem;
-        font-weight: normal;
-    }
+  /* Reusables */
+  .logo {
+    height: 5.2rem;
+    align-self: self-start;
+  }
 
-    .signin-or-signup {
-        margin: 1.4rem 0 0 0;
-    }
+  .sad-mango {
+    height: 25.6rem;
+  }
 
-    .signin-or-signup a {
-        font-weight: 500;
-        color: #5d2814;
-        text-decoration: none;
-    }
+  .input-field {
+    padding: 0.6rem;
+    margin-bottom: 2.4rem;
+    outline: none;
+    border: 1px solid #dfd7d4;
+  }
 
-    .signin-or-signup a:hover {
-        text-decoration: underline;
-    }
+  .title {
+    font-size: 2.4rem;
+  }
 
-    .signin-signup-button {
-        padding: 0.6rem 3.2rem;
-        font-family: "Rubik", serif, system-ui;
-        background-color: #5d2814;
-        color: #fff;
-        border: none;
-    }
+  .subtitle {
+    margin: 1.4rem 0 1rem 0;
+    color: #828282;
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+
+  .signin-or-signup {
+    margin: 1.4rem 0 0 0;
+  }
+
+  .signin-or-signup a {
+    font-weight: 500;
+    color: #5d2814;
+    text-decoration: none;
+  }
+
+  .signin-or-signup a:hover {
+    text-decoration: underline;
+  }
+
+  .signin-signup-button {
+    padding: 0.6rem 3.2rem;
+    font-family: "Rubik", serif, system-ui;
+    background-color: #5d2814;
+    color: #fff;
+    border: none;
+  }
 </style>

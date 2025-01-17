@@ -49,9 +49,9 @@ app.get("/", (request, response) => {
 });
 
 // If wrong path, redirect to error 404 page
-// app.use((request, response) => {
-//   response.render('404.ejs');
-// });
+app.use((request, response) => {
+  response.render("404.ejs", { route: request.originalUrl });
+});
 
 // Start the server on port 3000
 app.listen(process.env.PORT, () => {
