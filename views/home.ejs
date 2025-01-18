@@ -12,7 +12,20 @@
     <!-- Adding header to the page -->
     <%- include('./partials/header') %>
     <main>
-      <h1>This is home page</h1>
+      <section class="section-hero grid--c-1-1 hero-home">
+        <div class="hero welcome-container">
+          <h1 class="heading-primary">Welcome to Cookbook!</h1>
+          <p class="heading-description">
+            Discover the joy of cooking with our collection of delicious and
+            easy-to-follow recipes!
+          </p>
+        </div>
+
+        <div class="hero hero-image-container">
+          <img src="/img/home-image.svg" alt="Home Page" />
+          <a href="/" class="box-button box-button-filled">Start making →</a>
+        </div>
+      </section>
     </main>
   </body>
 </html>
