@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const authController = require("./controllers/auth");
+const foodController = require('./controllers/food');
+const recipesController = require('./controllers/recipes');
 
 // Inizializations
 const app = express();
@@ -38,6 +40,8 @@ mongoose
 
 // Routes
 app.use("/auth", authController);
+app.use("/food", foodController);
+app.use("/recipes", recipesController);
 
 // Homepage
 app.get("/", (request, response) => {

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Food - Cookbook</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../views/partials/head') %>
+  </head>
+  <body>
+    <!-- Adding header to the page -->
+    <%- include('../views/partials/header') %>
+    <main>
+      <section class="main-section">
+        <center><a href="/food/newfood" class="box-button box-button-filled">Add new food</a></center>
+        <h1 class="main-section-title">My Food</h1>
+        <% if(foods) {
+          foods.forEach((food) => { %>
+            <div class="food-item">
+              <div class="food-image">
+                <img src="<%= food.image %>" alt="<%= food.name %>" />
+              </div>
+              <div class="food-name">
+                <p><%= food.name %></p>
+              </div>
+              <div class="food-options">
+                <form action="/food/<%=food._id%>/delete?_method=DELETE" method="POST">
+                  <button class="options-button">Delete</button>
+                </form>
+              </div>
+            </div>
+          <% });
+        } %>
+      </section>
+      
+    </main>
+  </body>
+</html>
