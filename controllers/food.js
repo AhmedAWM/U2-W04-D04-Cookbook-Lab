@@ -5,7 +5,7 @@ const router = express.Router();
 // Models
 const User = require('../models/user');
 
-// View all foods
+// View my food
 router.get('/', async (request, response) => {
     try {
         if(request.session.user) {

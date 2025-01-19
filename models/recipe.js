@@ -10,14 +10,22 @@ const recipeSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Profile",
     required: true,
   },
-  ingredients: {
+  ingredients: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Ingredient",
     required: true,
-  },
+  }],
 });
+
+const Recipe = mongoose.model("Recipe", recipeSchema);
+
+module.exports = Recipe;
