@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipes - Cookbook</title>
+    <title>Recipe - Cookbook</title>
 
     <!-- Adding style to the page -->
     <%- include('../views/partials/head') %>
@@ -11,8 +11,25 @@
   <body>
     <!-- Adding header to the page -->
     <%- include('../views/partials/header') %>
-    <main>
-      <h1 class="heading-primary">Recipe</h1>
+    <main class="main-section">
+      <center><h1 class="main-section-title"><%= details.name %></h1></center>
+
+      <div class="recipe-details">
+        <center><img src="<%= details.image %>" alt="<%= details.name %>"></center>
+
+        <center><p class="recipe-owner">By <%= details.owner.name %></p></center>
+
+        <div>
+          <label for="ingredients"><b>Ingredients: </b></label>
+          <ul name="ingredients">
+            <% details.ingredients.forEach((ingredient) => { %>
+              <li><%= ingredient %></li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <p><b>Instructions: </b><br><%= details.instructions %></p>
+      </div>
     </main>
   </body>
 </html>

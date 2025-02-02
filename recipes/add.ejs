@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookbook - Signup</title>
+    <title>Cookbook - Add new recipe</title>
 
     <!-- Adding style to the page -->
     <%- include('../views/partials/head') %>
@@ -17,20 +17,24 @@
             <form action="/recipes/myrecipes/add" method="POST" class="general-input-form">
                 <h1 class="title">Add a recipe</h1>
                 <h2 class="subtitle">Please fill in information</h2>
+
                 <label for="name">Recipe Name</label>
                 <input type="text" name="name" class="input-field" required>
+
+                <label for="instructions">instructions</label>
+                <textarea name="instructions" class="input-field text-box" required></textarea>
 
                 <label for="image">Image URL</label>
                 <input type="text" name="image" class="input-field" placeholder="https://" required>
 
-                <label for="ingredients">Ingredients</label>
+                <label>Ingredients</label>
                 <div class="ingredients">
-                    <select name="ingredients" id="ingredients">
-                        <% pantries.forEach((pantry) => { %>
-                            <option value="<%= pantry._id %>"><%= pantry.name %></option>
-                        <% }); %>
-                    </select>
-                    <button class="add-ingredient-button" id="add-ingredient-button" onclick="addIngredient()">Add</button>
+                    <% pantries.forEach((pantry) => { %>
+                        <div>
+                            <input type="checkbox" value="<%= pantry.name %>" name="ingredients">
+                            <label for="ingredients"><%= pantry.name %></label>
+                        </div>
+                    <% }); %>
                 </div>
 
                 <div>

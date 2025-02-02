@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recipes - Cookbook</title>
+    <title>All Recipes - Cookbook</title>
 
     <!-- Adding style to the page -->
     <%- include('../views/partials/head') %>
@@ -11,8 +11,26 @@
   <body>
     <!-- Adding header to the page -->
     <%- include('../views/partials/header') %>
-    <main>
-      <h1 class="heading-primary">Recipes</h1>
+    <main class="main-section">
+      <h1 class="main-section-title">All Recipes</h1>
+
+      <% if(recipes.length === 0) { %>
+        <p class="no-data">
+          <img src="/img/empty.svg" alt="No recipes" />
+          No recipies found
+        </p>
+        <% } else { %> 
+        <!-- Recipes items -->
+         <div class="recipe-container">
+          <% recipes.forEach(recipe => { %>
+            <div class="recipe-item" onclick="window.location.href='recipe/<%= recipe._id %>';">
+              <img class="recipe-image" src="<%= recipe.image %>" alt="<%= recipe.name %>">
+              <p class="recipe-owner">By <%= recipe.owner %></p>
+              <p class="recipe-title"><%= recipe.name %></p>
+          </div>
+          <% }); %>
+         </div>
+        <% } %> 
     </main>
   </body>
 </html>

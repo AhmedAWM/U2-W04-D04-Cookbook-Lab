@@ -11,11 +11,27 @@
   <body>
     <!-- Adding header to the page -->
     <%- include('../views/partials/header') %>
-    <main>
-      <section class="main-section">
+    <main class="main-section">
         <center><a href="/recipes/myrecipes/add" class="box-button box-button-filled">Add new recipe</a></center>
         <h1 class="main-section-title">My Recipes</h1>
-      </section>
+
+        <% if(recipes.length === 0) { %>
+          <p class="no-data">
+            <img src="/img/empty.svg" alt="No recipes" />
+            No recipies found
+          </p>
+          <% } else { %> 
+          <!-- Recipes items -->
+           <div class="recipe-container">
+            <% recipes.forEach(recipe => { %>
+              <div class="recipe-item" onclick="window.location.href='recipe/<%= recipe._id %>';">
+                <img class="recipe-image" src="<%= recipe.image %>" alt="<%= recipe.name %>">
+                <p class="recipe-owner">By <%= recipe.owner %></p>
+                <p class="recipe-title"><%= recipe.name %></p>
+            </div>
+            <% }); %>
+           </div>
+          <% } %>
     </main>
   </body>
 </html>

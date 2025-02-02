@@ -127,10 +127,11 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     width: 75%;
-    max-height: 19.2rem;
+    height: 12.8rem;
     margin: 6.4rem auto 0 auto;
-    padding: 1.2rem;
+    /* padding: 1.2rem; */
     border: #b3b3b3 0.3rem solid;
+    border-radius: 0.4rem;
   }
 
   .food-item:hover {
@@ -138,8 +139,9 @@
   }
 
   .food-image img {
-    max-width: 12.8rem;
-    max-height: 12.8rem;
+    width: auto;
+    height: 12.2rem;
+    object-fit: cover;
   }
 
   .food-name {
@@ -153,6 +155,61 @@
     gap: 1.4rem;
     justify-self: center;
     align-self: center;
+  }
+
+  /* Recipes */
+  .recipe-container {
+    display: flex;
+    gap: 2.4rem;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .recipe-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 28rem;
+    cursor: pointer;
+  }
+
+  .recipe-item:hover {
+    box-shadow: 0px 4px 10px #828282;
+  }
+
+  .recipe-image {
+    width: 28rem;
+    height: 18rem;
+    object-fit: cover;
+  }
+
+  .recipe-owner {
+    padding: 0 0.8rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #828282;
+  }
+
+  .recipe-title {
+    padding: 0 0.8rem 0.8rem 0.8rem;
+    font-weight: 500;
+    font-size: 2.4rem;
+  }
+
+  .recipe-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+  }
+
+  .recipe-details img {
+    width: 100%;
+    height: 25.6rem;
+    object-fit: cover;
+    border-radius: 0.8rem;
   }
 
   /* Reusables */
@@ -280,6 +337,40 @@
     background-color: #5d2814;
     color: #fff;
     border: none;
+  }
+
+  .no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .no-data img {
+    width: 5.2rem;
+  }
+
+  .text-box {
+    overflow-y: scroll; /* Enable vertical scrolling */
+    resize: none; /* Disable resizing */
+    height: 8.4rem;
+  }
+
+  .ingredients {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-bottom: 2.4rem;
+  }
+
+  .first-row {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2.4rem;
+    border-bottom: #b3b3b3 0.1rem solid;
+    border-right: none !important;
   }
 
   /* Grids sizes */
