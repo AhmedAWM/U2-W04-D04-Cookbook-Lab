@@ -29,6 +29,13 @@
         </div>
 
         <p><b>Instructions: </b><br><%= details.instructions %></p>
+
+        <% if(user._id === details.owner._id.toString()) { %>
+          <div class="recipe-options">
+            <button type="button" class="signin-signup-button">Edit</button>
+            <button type="button" class="signin-signup-button delete-button">Delete</button>
+          </div>
+        <% } %>
       </div>
     </main>
   </body>

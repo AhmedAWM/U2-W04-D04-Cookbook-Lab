@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookbook - Add new recipe</title>
+
+    <!-- Adding style to the page -->
+    <%- include('../views/partials/head') %>
+</head>
+<body>
+    <!-- Adding header to the page -->
+    <%- include('../views/partials/header') %>
+    <% let ingredients = []; %>
+    <main>
+        <section class="general-input-container">
+            <form action="/recipes/myrecipes/add" method="POST" class="general-input-form">
+                <h1 class="title">Edit recipe</h1>
+                <h2 class="subtitle">Please fill in information</h2>
+
+                <label for="name">Recipe Name</label>
+                <input type="text" name="name" class="input-field" value="<%= recipe.name %>" required>
+
+                <label for="instructions">Instructions</label>
+                <textarea name="instructions" class="input-field text-box" required><%= recipe.instructions %></textarea>
+
+                <label for="image">Image URL</label>
+                <input type="text" name="image" class="input-field" value="<%= recipe.image %>" placeholder="https://" required>
+
+                <label>Ingredients</label>
+                <div class="ingredients">
+                    <% pantries.forEach((pantry) => { %>
+                        <div>
+                            <input type="checkbox" value="<%= pantry.name %>" name="ingredients">
+                            <label for="ingredients"><%= pantry.name %></label>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <div>
+                    <button class="signin-signup-button">Submit changes</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Add ingredient to list -->
+    <script>
+        // Empty list of ingredients
+        const ingredientsList = [];
+
+        // Elements
+        const addIngredientsButton = document.querySelector('#add-ingredient-button');
+        const selectedOption = document.querySelector('#ingredients'); // Select element
+        const ingredientId = selectedOption.value; // Value which is ID
+        const ingredientName = selectedOption.textContent; // Text of the element
+
+        // Add items to the list
+        addIngredientsButton.addEventListener('click', () => {
+            // Check if item already exists
+            if (ingredientsList.some(item => item.value === ingredientId)) {
+                alert('Item already added!');
+                return;
+            }
+
+            // Add to ingredients list
+            const item = { ingredients: ingredientId, name: ingredientName };
+            ingredientsList.push(item);
+        });
+
+
+    </script>
+</body>
+</html>

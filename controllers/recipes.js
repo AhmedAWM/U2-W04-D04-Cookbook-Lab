@@ -13,15 +13,10 @@ router.get('/all', async (request, response) => {
             const allRecipes = await Recipe.find();
             const recipes = [];
 
-            console.log("Recipes: ", allRecipes);
-
             for(let i = 0; i < allRecipes.length; ++ i) {
-                console.log("Owner: ", allRecipes[i].owner);
                 const owner = await User.findById(allRecipes[i].owner);
                 recipes.push({_id: allRecipes[i]._id, name: allRecipes[i].name, instructions: allRecipes[i].instructions, image: allRecipes[i].image, owner: owner.name, ingredients: allRecipes[i].ingredients });
             }
-
-            console.log(recipes);
 
             response.render('../recipes/recipes.ejs', { recipes: recipes, user: request.session.user });
         } else {
@@ -44,8 +39,6 @@ router.get('/myrecipes', async (request, response) => {
                 recipes.push({_id: allRecipes[i]._id, name: allRecipes[i].name, instructions: allRecipes[i].instructions, image: allRecipes[i].image, owner: owner.name, ingredients: allRecipes[i].ingredients });
             }
 
-            console.log("My Recipes: ", recipes);
-
             response.render('../recipes/myRecipes.ejs', { recipes: recipes, user: request.session.user });
         } else {
             response.redirect("/");
@@ -56,7 +49,7 @@ router.get('/myrecipes', async (request, response) => {
 });
 
 // View recipe
-router.get('/recipe/:id', async (request, response) => {
+router.get('/:id', async (request, response) => {
     try {
         if(request.session.user) {
             const recipe = await Recipe.findById(request.params.id);
@@ -69,6 +62,15 @@ router.get('/recipe/:id', async (request, response) => {
                 image: recipe.image,
                 owner: owner,
                 ingredients: ingredients
+            }
+
+            console.log("Recipe owner from JS: ", details.owner._id);
+            console.log("My ID: ", request.session.user._id);
+
+            if(details.owner._id.toString() === request.session.user._id) {
+                console.log("This is true");
+            } else {
+                console.log("This is false");
             }
 
             response.render('../recipes/recipe.ejs', { details: details, user: request.session.user });
@@ -111,11 +113,12 @@ router.post('/myrecipes/add', async (request, response) => {
 });
 
 // Edit my recipes
-router.get('/myrecipes/:id/edit', async (request, response) => {
+router.get('/:id/edit', async (request, response) => {
     try {
         if(request.session.user) {
             const recipe = await Recipe.findById(request.params.id);
-            response.render('../recipes/edit.ejs', { recipe: recipe, user: request.session.user });
+            const pantries = await User.findById(request.session.user._id);
+            response.render('../recipes/edit.ejs', { recipe: recipe, pantries: pantries.pantry, user: request.session.user });
         } else {
             response.redirect("/");
         }
