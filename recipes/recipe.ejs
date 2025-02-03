@@ -32,8 +32,10 @@
 
         <% if(user._id === details.owner._id.toString()) { %>
           <div class="recipe-options">
-            <button type="button" class="signin-signup-button">Edit</button>
-            <button type="button" class="signin-signup-button delete-button">Delete</button>
+            <button type="button" class="signin-signup-button" onclick="window.location.href='<%= details._id %>/edit';">Edit</button>
+            <form action="/recipes/<%= details._id %>/delete?_method=DELETE" method="POST">
+              <button class="signin-signup-button delete-button">Delete</button>
+            </form>
           </div>
         <% } %>
       </div>

@@ -57,6 +57,7 @@ router.get('/:id', async (request, response) => {
             const ingredients = recipe.ingredients;
 
             const details = {
+                _id: recipe._id,
                 name: recipe.name,
                 instructions: recipe.instructions,
                 image: recipe.image,
@@ -112,13 +113,42 @@ router.post('/myrecipes/add', async (request, response) => {
     }
 });
 
-// Edit my recipes
+// Edit my recipes page
 router.get('/:id/edit', async (request, response) => {
     try {
         if(request.session.user) {
             const recipe = await Recipe.findById(request.params.id);
             const pantries = await User.findById(request.session.user._id);
             response.render('../recipes/edit.ejs', { recipe: recipe, pantries: pantries.pantry, user: request.session.user });
+        } else {
+            response.redirect("/");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+// Update recipe
+router.post('/:id/edit', async (request, response) => {
+    try {
+        if(request.session.user) {
+            const recipe = await Recipe.findByIdAndUpdate(request.params.id, request.body);
+
+            response.redirect('/recipes/myrecipes');
+        } else {
+            response.redirect("/");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+// Delete recipe
+router.delete('/:id/delete', async (request, response) => {
+    try {
+        if(request.session.user) {
+            await Recipe.findByIdAndDelete(request.params.id);
+            response.redirect('/recipes/myrecipes');
         } else {
             response.redirect("/");
         }

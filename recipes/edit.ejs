@@ -14,7 +14,7 @@
     <% let ingredients = []; %>
     <main>
         <section class="general-input-container">
-            <form action="/recipes/myrecipes/add" method="POST" class="general-input-form">
+            <form action="/recipes/<%= recipe._id %>/edit" method="POST" class="general-input-form">
                 <h1 class="title">Edit recipe</h1>
                 <h2 class="subtitle">Please fill in information</h2>
 
